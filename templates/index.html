@@ -12,7 +12,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Shivam Todo List</a>
+        <a class="navbar-brand" href="/">Shivam Todo List</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,10 +31,11 @@
       </nav>
       <div class="container my-2">
         <h2>Add a Todo</h2>
-        <form>
+        
+        <form action="/" method="POST">
             <div class="form-group">
               <label for="title"><h3>Todo Title </h3></label>
-              <input type="text" class="form-control" id="title",name="title">
+              <input type="text" class="form-control" id="title" name="title">
               
             </div>
             <div class="form-group">
@@ -51,30 +52,22 @@
             <thead>
               <tr>
                 <th scope="col">S.No</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Title </th>
+                <th scope="col">Description</th>
+                <th scope="col">Time</th>
               </tr>
             </thead>
             <tbody>
+              {% for todo in allTodo %}
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{todo.title}}</td>
+                <td>{{todo.desc}}</td>
+                <td>@{{todo.date_created}}</td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              {% endfor %}
+              
+              
             </tbody>
           </table>
       </div>
